@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 export default (_env, argv) => ({
     entry: {
-        goblin: "./src/goblins-game/app.js",
+        goblin: "./src/js/app.js",
     },
     devServer: {
         static: {
