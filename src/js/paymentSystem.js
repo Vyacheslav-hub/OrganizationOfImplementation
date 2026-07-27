@@ -1,3 +1,4 @@
 export const getPaymentSystem = (cardNumber) =>{
-    return 'Visa'
+    if (cardNumber) { return 'Visa'}
+
 }
