@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 export default (_env, argv) => ({
     entry: {
-        goblin: "./src/js/app.js",
+        app: "./src/js/app.js",
     },
     devServer: {
         static: {
@@ -21,7 +21,7 @@ export default (_env, argv) => ({
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html',
-            chunks: ['goblin']
+            chunks: ['app']
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",
