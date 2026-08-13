@@ -7,6 +7,7 @@ describe('Проверка карты', () => {
     beforeAll(async () => {
         browser = await puppeteer.launch({
             headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
         });
 
         page = await browser.newPage();
@@ -15,7 +16,9 @@ describe('Проверка карты', () => {
     });
 
     afterAll(async () => {
-        await browser.close();
+        if (browser) {
+            await browser.close();
+        }
     });
 
     test('валидный номер карты', async () => {
