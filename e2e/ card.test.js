@@ -26,11 +26,36 @@ describe('Проверка карты', () => {
 
         await page.click('button[type="submit"]');
 
+        await page.waitForFunction(() => {
+            return document.querySelector('.card.active') !== null;
+        });
+
         const result = await page.$eval(
             '.result',
             element => element.textContent,
         );
 
         expect(result).toBe('Карта валидна');
+    });
+
+    test('невалидный номер карты', async () => {
+        await page.$eval('#card-number', element => {
+            element.value = '';
+        });
+
+        await page.type('#card-number', '4111111111111112');
+
+        await page.click('button[type="submit"]');
+
+        await page.waitForFunction(() => {
+            return document.querySelector('.card.active') !== null;
+        });
+
+        const result = await page.$eval(
+            '.result',
+            element => element.textContent,
+        );
+
+        expect(result).toBe('Карта невалидна');
     });
 });
