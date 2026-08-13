@@ -16,8 +16,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
+    "test:e2e": "NODE_OPTIONS='--experimental-vm-modules' jest e2e",
     "build": "webpack --mode=production",
     "start": "webpack serve --mode=development",
+    "test:e2e:ci": "start-server-and-test start http://localhost:8080 test:e2e",
     "lint": "eslint ."
   },
   "devDependencies": {
@@ -32,6 +34,8 @@
     "html-webpack-plugin": "^5.6.7",
     "jest": "^30.4.2",
     "mini-css-extract-plugin": "^2.10.2",
+    "puppeteer": "^25.6.0",
+    "start-server-and-test": "^3.0.12",
     "webpack": "^5.108.4",
     "webpack-cli": "^7.2.1",
     "webpack-dev-server": "^6.0.0"
